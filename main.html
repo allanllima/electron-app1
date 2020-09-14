@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Comentários</h1>
+    <div></div>
+    <script>
+        const electron = require('electron');
+        const { ipcRenderer } = electron;
+
+        ipcRenderer.on('addComment', (event, comment) => {
+            const p = document.createElement('p');
+            const text = document.createTextNode(comment);
+
+            p.appendChild(text);
+            document.querySelector('div').appendChild(p);
+        })
+    </script>
 </body>
+
 </html>
